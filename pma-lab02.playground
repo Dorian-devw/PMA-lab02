@@ -1,0 +1,98 @@
+//TECSUP 2026-1 | PROGRAMACIÓN DE MÓVILES AVANZADA
+// Lunes 23/03/2026
+
+// Caso 01
+// Alumno Daniel Gonzales Arce
+func calcularMontoFinal(capital: Double, tasa: Double) -> Double {
+    
+    // Cálculo de intereses
+    let intereses = capital * tasa
+    
+    // Mostrar intereses generados
+    print("Intereses generados: $\(intereses)")
+    
+    // Condicional
+    if intereses > 7000 {
+        print("Los intereses superan $7000. Se reinvierten.")
+        let montoFinal = capital + intereses
+        return montoFinal
+    } else {
+        print("Los intereses no superan $7000. No se reinvierten.")
+        return capital
+    }
+}
+// Datos de ejemplo
+let capitalInicial = 50000.0
+let tasaInteres = 0.08 
+// Llamada a la función
+let resultado = calcularMontoFinal(capital: capitalInicial, tasa: tasaInteres)
+// Resultado final
+print("Capital final en la cuenta: $\(resultado)")
+
+// Caso 02
+// Alumno Frank Sinca Orozco
+let personaPeso: Int = 70
+let tiempo: Int = 180
+let actividad: String = "reposo"
+let calorias: Float = actividad == "dormir" ? 1.08:1.66
+
+if (actividad == "dormir" || actividad == "reposo"){
+    if (tiempo < 1 /* menor entero positivo*/){
+        print("❌ Error: El tiempo debe ser un número entero positivo")
+    } else {
+        var caloriaConsumida = calorias * Float(tiempo)
+        print("✅ Actividad: \(actividad)")
+        print("⏳ Tiempo: \(tiempo)")
+        print("🔥 Calorias consumidas: \(caloriaConsumida)")
+    }
+} else {
+    print("❌ Error: Actividad invalida. Solo se permite dormir o reposo")
+}
+
+
+CASO 04
+// Alumno Sinca Orozco y Gonzales Arce
+
+func buscarUPM() {
+    print("UPM: Referente de la ingeniería estructural y técnica en el ámbito europeo, esta universidad destaca por la rigurosidad de sus escuelas especializadas (Caminos, Aeronáuticos, Teleco) y su alineación con los estándares del Espacio Europeo de Educación Superior y la acreditación ABET.")
+}
+
+func buscarUNALM(nombre: String, llamadasRestantes: Int) {
+    if nombre == "Buscar UNALM" {
+        print("UNALM: Es el hub científico especializado en biociencias, gestión de recursos hídricos y genómica agrícola del Perú, con una malla curricular que integra la biología molecular, la química de suelos y la ingeniería ambiental para la optimización de la seguridad alimentaria.")
+    } else if llamadasRestantes > 0 {
+        print("Lamadas no posibles")
+        buscarUPM()
+    } else {
+        print("Error: Sin llamadas para UPM.")
+    }
+}
+
+func buscarUNI(nombre: String, llamadasRestantes: Int) {
+    if nombre == "Buscar UNI" {
+        print("UNI: Institución líder en el Perú en formación de ciencias básicas aplicadas y análisis analítico-matemático, reconocida por un proceso de selección altamente competitivo que garantiza un perfil de egresado con una resiliencia cognitiva y capacidad de abstracción superiores.")
+    }
+    else if !nombre.contains("UN") && llamadasRestantes > 0 {
+        buscarUPM()
+    }
+    else if llamadasRestantes > 0 {
+        buscarUNALM(nombre: nombre, llamadasRestantes: llamadasRestantes - 1)
+    }
+}
+
+func funcionPadre(_ nombre: String, _ presupuesto: Int) {
+    if nombre == "Buscar TECSUP" {
+        print("TECSUP: Se define como un centro de formación técnica de alta especialización enfocado en la operatividad y mantenimiento de activos industriales de alto valor, utilizando una metodología de aprendizaje basado en proyectos (PBL).")
+    } else if nombre == "Buscar MIT"{
+        print("MIT: Es el epicentro global de la convergencia entre ciencia básica e ingeniería disruptiva, operando bajo un modelo de investigación aplicada y transferencia tecnológica masiva que domina campos como la computación cuántica, la inteligencia artificial generativa y la biotecnología sintética.")
+    }
+    else if presupuesto > 0 {
+        buscarUNI(nombre: nombre, llamadasRestantes: presupuesto - 1)
+    } else {
+        print("Error: No tienes llamadas permitidas.")
+    }
+}
+
+funcionPadre("Buscar MIT", 2)
+
+
